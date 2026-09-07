@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panchaksharayya S. | AR/VR Developer & Cinematic Visual Storyteller</title>
+  
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description" content="Official portfolio of Panchaksharayya S. - B.Tech IT (AR/VR), Unity Developer, Additive Manufacturing & Python Analytics, alongside Cinematic Filmmaker, Videographer & Photographer." />
+  <meta name="keywords" content="Panchaksharayya, AR/VR Developer, Unity 3D, Filmmaker, Photographer, Python Analytics, Drone Additive Manufacturing, Portfolio" />
+  <meta name="author" content="Panchaksharayya S." />
+
+  <!-- Google Fonts: Syne (Ultra bold headline font like Photo 1) + Plus Jakarta Sans + Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#FF2A3A',
+              redHover: '#E01E2E',
+              dark: '#08090C',
+              surface: '#0F1117',
+              card: '#131620',
+              border: 'rgba(255, 255, 255, 0.08)',
+              borderSubtle: 'rgba(255, 255, 255, 0.05)',
+            }
+          },
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- QRCode.js library for 100% client-side instant QR generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    /* Dot Matrix Grid from Reference Photo 1 */
+    .dot-grid-bg {
+      background-color: #08090C;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.11) 1.2px, transparent 1.2px);
+      background-size: 26px 26px;
+    }
+
+    /* Subtle Architectural Grid Lines from Reference Photo 2 */
+    .grid-line-v {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.07) 15%, rgba(255, 255, 255, 0.07) 85%, transparent);
+      pointer-events: none;
+    }
+    .grid-line-h {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.07) 15%, rgba(255, 255, 255, 0.07) 85%, transparent);
+      pointer-events: none;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08090C;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #232733;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #FF2A3A;
+    }
+
+    /* Cinematic Film Vignette & Dark Contrast */
+    .cinematic-vignette {
+      background: radial-gradient(circle at center, transparent 35%, rgba(8, 9, 12, 0.88) 90%);
+    }
+
+    /* Ticker marquee animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 26s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Print styles for Resume */
+    @media print {
+      header, footer, #creative, #achievements, #contact, #toast, .animate-marquee, #qrModal, #videoModal, #lightboxModal {
+        display: none !important;
+      }
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      #resume, #about, #projects {
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .text-white {
+        color: black !important;
+      }
+      .text-slate-300, .text-slate-400 {
+        color: #444 !important;
+      }
+      .bg-[#0E1017], .bg-[#0E1119], .bg-[#08090C] {
+        background: #f8f8f8 !important;
+        border-color: #ddd !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-[#08090C] text-slate-200 font-sans antialiased selection:bg-[#FF2A3A] selection:text-white relative min-h-screen overflow-x-hidden">
+
+  <!-- Dot Matrix Canvas Background (from Photo 1) -->
+  <div class="fixed inset-0 dot-grid-bg -z-20 pointer-events-none"></div>
+
+  <!-- Ambient Cinematic Red Accent Glows -->
+  <div class="fixed top-12 left-1/2 -translate-x-1/2 w-[750px] h-[350px] bg-red-600/10 blur-[130px] rounded-full pointer-events-none -z-10"></div>
+  <div class="fixed bottom-10 right-10 w-[550px] h-[320px] bg-red-900/10 blur-[140px] rounded-full pointer-events-none -z-10"></div>
+
+  <!-- Editorial Layout Guide Lines (Photo 2 structure) -->
+  <div class="hidden lg:block grid-line-v left-[18%]"></div>
+  <div class="hidden lg:block grid-line-v right-[18%]"></div>
+
+  <!-- ==================== HEADER (Photo 2 Composition + Photo 1 Branding) ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-[#08090C]/90 border-b border-white/[0.08] transition duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Top Left Tagline (Exact style of Photo 2) -->
+      <div class="flex items-center gap-3">
+        <a href="#hero" class="text-left group">
+          <div class="text-[11px] md:text-xs font-syne font-extrabold uppercase tracking-widest text-slate-300 leading-tight">
+            CRAFTING REALITIES THROUGH<br/>
+            <span class="text-white">CODE, AR/VR & </span><span class="text-[#FF2A3A] group-hover:underline">MOTION.</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-mono text-slate-400">
+        <a href="#about" class="hover:text-white transition py-1">About</a>
+        <a href="#projects" class="hover:text-white transition py-1">Projects</a>
+        <a href="#creative" class="hover:text-white transition py-1">Film & Photo</a>
+        <a href="#resume" class="hover:text-white transition py-1">Resume</a>
+        <a href="#achievements" class="hover:text-white transition py-1">Records</a>
+      </nav>
+
+      <!-- Right Action Area: QR & "TALK TO ME" Red Button (Photo 2 button) -->
+      <div class="flex items-center gap-3">
+        <!-- Interactive QR Code Trigger Button -->
+        <button onclick="openQRModal()" title="View & Download Resume QR" class="px-3 py-2 text-xs font-mono uppercase tracking-wider text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-none transition flex items-center gap-2">
+          <i data-lucide="qr-code" class="w-4 h-4 text-[#FF2A3A]"></i>
+          <span class="hidden sm:inline">Portfolio QR</span>
+        </button>
+
+        <!-- Red CTA Button from Photo 2 -->
+        <a href="#contact" class="px-5 py-2.5 bg-[#FF2A3A] hover:bg-[#E01E2E] text-white font-syne font-extrabold text-xs uppercase tracking-widest transition shadow-lg shadow-red-900/30">
+          TALK TO ME
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-white p-2" onclick="toggleMobileMenu()">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-[#08090C] px-6 py-4 space-y-3 font-mono text-xs uppercase tracking-wider">
+      <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">About</a>
+      <a href="#projects" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">Projects & Code</a>
+      <a href="#creative" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">Film & Photography</a>
+      <a href="#resume" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">Resume & Academics</a>
+      <a href="#achievements" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-1">Records & Certs</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block text-[#FF2A3A] font-bold py-1">Contact Details</a>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION (Photo 2 Composition + Photo 1 Typography) ==================== -->
+  <section id="hero" class="relative pt-28 md:pt-36 pb-20 min-h-screen flex flex-col justify-between overflow-hidden">
+    
+    <div class="max-w-7xl mx-auto px-6 w-full my-auto">
+      
+      <!-- Upper Stage: Portrait Background & Side Quote (Exact Julian Marlowe Layout) -->
+      <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[500px]">
+        
+        <!-- Center/Main Cinematic Portrait Stage -->
+        <div class="lg:col-span-8 relative flex justify-center items-center">
+          <div class="relative w-full max-w-[540px] aspect-[4/5] rounded-sm overflow-hidden border border-white/10 shadow-2xl group">
+            
+            <!-- High-Contrast Moody Cinematic Image (Style of Photo 2) -->
+            <img 
+              id="heroImage"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80" 
+              alt="Panchaksharayya Portrait" 
+              class="w-full h-full object-cover object-center grayscale contrast-125 brightness-90 group-hover:scale-105 transition-transform duration-700"
+            />
+            
+            <!-- Vignette Overlay -->
+            <div class="absolute inset-0 cinematic-vignette"></div>
+            
+            <!-- Atmospheric Dark Gradients -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#08090C] via-transparent to-transparent opacity-95"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#08090C] via-transparent to-[#08090C] opacity-70"></div>
+
+            <!-- AR/VR Grid overlay badge -->
+            <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 bg-black/70 backdrop-blur-md border border-white/15 text-[11px] font-mono text-slate-300">
+              <span class="w-2 h-2 rounded-full bg-[#FF2A3A] animate-ping"></span>
+              <span>AR/VR ENGINEER • FILMMAKER</span>
+            </div>
+
+            <div class="absolute top-4 right-4 flex items-center gap-2 px-3 py-1 bg-black/70 backdrop-blur-md border border-white/15 text-[11px] font-mono text-emerald-400">
+              <i data-lucide="circle-check" class="w-3.5 h-3.5"></i>
+              <span>AVAILABLE 2025-2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Editorial Snippet (Exact Right Column from Photo 2) -->
+        <div class="lg:col-span-4 flex flex-col justify-center space-y-6 lg:pl-4">
+          <div class="w-12 h-[2px] bg-[#FF2A3A]"></div>
+          
+          <blockquote class="text-slate-300 font-sans text-sm md:text-base leading-relaxed tracking-wide">
+            "I'm deeply driven by the intersection of <strong class="text-white">spatial computing</strong> and <strong class="text-[#FF2A3A]">cinematic motion</strong>. Whether architecting virtual reality simulations in Unity, manufacturing aerospace drone frames, or capturing collegiate human stories in 24 frames per second — I build experiences that resonate."
+          </blockquote>
+
+          <div class="pt-2 border-t border-white/10 space-y-2">
+            <p class="text-xs font-mono uppercase tracking-widest text-slate-400">
+              <span class="text-white font-bold">B.Tech IT (AR/VR)</span> • 2024–2028
+            </p>
+            <p class="text-xs font-mono text-slate-400">
+              CGPA: <span class="text-[#FF2A3A] font-bold">8.2</span> | 12th: <span class="text-white font-bold">95.5%</span> | 10th: <span class="text-white font-bold">94.8%</span>
+            </p>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a href="#projects" class="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-mono tracking-wider uppercase text-white flex items-center gap-2 transition">
+              <i data-lucide="code-2" class="w-4 h-4 text-[#FF2A3A]"></i>
+              <span>View Code</span>
+            </a>
+            <a href="#creative" class="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-mono tracking-wider uppercase text-white flex items-center gap-2 transition">
+              <i data-lucide="film" class="w-4 h-4 text-[#FF2A3A]"></i>
+              <span>Showreels</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lower Giant Typography Overlay (Exact Photo 1 Font & Red Dash Accent: "AMELI-A" -> "PANCHAKSHARAYYA-S") -->
+      <div class="relative -mt-10 md:-mt-20 z-20 text-center lg:text-left">
+        <h1 class="font-syne font-black text-4xl sm:text-6xl md:text-8xl lg:text-[105px] tracking-tight uppercase text-white leading-none select-none drop-shadow-2xl">
+          PANCHAKSHARAYYA<span class="text-[#FF2A3A]">-S</span>
+        </h1>
+        
+        <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-4">
+          <p class="font-sans text-sm sm:text-base font-medium text-slate-400 tracking-wide">
+            Unity AR/VR Developer <span class="text-[#FF2A3A] font-bold mx-1">•</span> Additive Manufacturing <span class="text-[#FF2A3A] font-bold mx-1">•</span> Cinematographer & Editor
+          </p>
+
+          <!-- Social Quick Links Dock -->
+          <div class="flex items-center gap-4 text-slate-400">
+            <a href="https://www.linkedin.com/in/panchaksharayya-s" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="LinkedIn Profile">
+              <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+            <a href="https://github.com/panchaksharayya12" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="GitHub Profile">
+              <i data-lucide="github" class="w-5 h-5"></i>
+            </a>
+            <a href="https://leetcode.com/u/panchaksharayya12" target="_blank" rel="noopener noreferrer" class="hover:text-white transition text-xs font-mono font-bold" title="LeetCode Profile">
+              LC
+            </a>
+            <a href="https://www.hackerrank.com/profile/panchaksharayya12" target="_blank" rel="noopener noreferrer" class="hover:text-white transition text-xs font-mono font-bold" title="HackerRank Profile">
+              HR
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition" title="Instagram (Photo & Reels)">
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+            <a href="mailto:panchaksharayyas22@gmail.com" class="hover:text-white transition" title="Direct Email">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Live Animated Marquee Ticker -->
+    <div class="w-full overflow-hidden border-y border-white/10 bg-[#0B0D12]/90 py-3 mt-12 select-none">
+      <div class="animate-marquee whitespace-nowrap text-xs font-mono uppercase tracking-[0.25em] text-slate-400">
+        <span class="mx-6 text-white font-bold">UNITY 3D ENGINE</span> •
+        <span class="mx-6 text-[#FF2A3A] font-bold">AR/VR SPATIAL COMPUTING</span> •
+        <span class="mx-6 text-white font-bold">3D PRINTING & CAD</span> •
+        <span class="mx-6 text-white font-bold">PYTHON DATA ANALYTICS</span> •
+        <span class="mx-6 text-[#FF2A3A] font-bold">CINEMATIC VIDEOGRAPHY</span> •
+        <span class="mx-6 text-white font-bold">POSTER & BRAND DESIGN</span> •
+        <span class="mx-6 text-white font-bold">COLOR GRADING & EDITING</span> •
+        <span class="mx-6 text-[#FF2A3A] font-bold">C / C++ / JAVA</span> •
+        <span class="mx-6 text-white font-bold">DSA & PROBLEM SOLVING</span> •
+        <span class="mx-6 text-white font-bold">UNITY 3D ENGINE</span> •
+        <span class="mx-6 text-[#FF2A3A] font-bold">AR/VR SPATIAL COMPUTING</span> •
+        <span class="mx-6 text-white font-bold">3D PRINTING & CAD</span> •
+        <span class="mx-6 text-white font-bold">PYTHON DATA ANALYTICS</span> •
+        <span class="mx-6 text-[#FF2A3A] font-bold">CINEMATIC VIDEOGRAPHY</span> •
+        <span class="mx-6 text-white font-bold">POSTER & BRAND DESIGN</span> •
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT & STATS SECTION ==================== -->
+  <section id="about" class="py-24 border-b border-white/[0.08] relative">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Title Badge -->
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-3 h-3 bg-[#FF2A3A]"></span>
+        <span class="text-xs font-mono tracking-widest uppercase text-slate-400">01 / BIOGRAPHY & PROFILE</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left: Core Bio & Dual Identity -->
+        <div class="lg:col-span-7 space-y-6">
+          <h2 class="font-syne font-extrabold text-3xl md:text-5xl uppercase tracking-tight text-white">
+            ENGINEERING WORLDS.<br/>
+            <span class="text-[#FF2A3A]">CAPTURING REALITY.</span>
+          </h2>
+
+          <p class="text-slate-300 leading-relaxed text-base font-light">
+            I am <strong class="text-white font-semibold">Panchaksharayya S.</strong>, an Information Technology undergraduate specializing in <strong class="text-white font-semibold">Augmented & Virtual Reality (AR/VR)</strong> (2024–2028). My work bridges software engineering, rapid hardware prototyping through additive manufacturing, and high-impact visual storytelling.
+          </p>
+
+          <p class="text-slate-400 leading-relaxed text-sm font-light">
+            On the tech frontier, I architect interactive Unity 3D environments, manufacture aerospace-grade drone frames using precision CAD modeling and 3D printing, and uncover data trends with Python. Behind the camera, I lead collegiate event videography, shoot documentary showcases, and design promotional posters that command attention.
+          </p>
+
+          <!-- Languages Spoken & Core Mindset -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <div class="p-4 bg-white/[0.02] border border-white/10">
+              <span class="text-xs font-mono text-[#FF2A3A] uppercase tracking-widest block mb-1">Spoken Languages</span>
+              <span class="text-sm font-bold text-white">English, Hindi, Kannada</span>
+            </div>
+            <div class="p-4 bg-white/[0.02] border border-white/10">
+              <span class="text-xs font-mono text-[#FF2A3A] uppercase tracking-widest block mb-1">Academic Status</span>
+              <span class="text-sm font-bold text-white">B.Tech IT (AR/VR) • CGPA 8.2</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Verified Academic & Track Record Badges -->
+        <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+          
+          <div class="p-6 bg-[#0E1017] border border-white/10 hover:border-[#FF2A3A]/50 transition flex flex-col justify-between">
+            <div>
+              <span class="text-4xl md:text-5xl font-syne font-black text-white">8.2</span>
+              <span class="text-xs font-mono uppercase text-[#FF2A3A] block mt-1">CGPA (B.Tech IT)</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-4">Graduation 2028. Information Technology with AR/VR specialization.</p>
+          </div>
+
+          <div class="p-6 bg-[#0E1017] border border-white/10 hover:border-[#FF2A3A]/50 transition flex flex-col justify-between">
+            <div>
+              <span class="text-4xl md:text-5xl font-syne font-black text-white">95.5%</span>
+              <span class="text-xs font-mono uppercase text-[#FF2A3A] block mt-1">12th Grade Board</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-4">SA PU College, Naregal (State Board, KA • 2024).</p>
+          </div>
+
+          <div class="p-6 bg-[#0E1017] border border-white/10 hover:border-[#FF2A3A]/50 transition flex flex-col justify-between">
+            <div>
+              <span class="text-4xl md:text-5xl font-syne font-black text-white">94.8%</span>
+              <span class="text-xs font-mono uppercase text-[#FF2A3A] block mt-1">10th Grade Board</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-4">Adarsha Vidyalaya, Vijayanagara (KA • 2022).</p>
+          </div>
+
+          <div class="p-6 bg-[#0E1017] border border-white/10 hover:border-[#FF2A3A]/50 transition flex flex-col justify-between">
+            <div>
+              <span class="text-4xl md:text-5xl font-syne font-black text-[#FF2A3A]">4+</span>
+              <span class="text-xs font-mono uppercase text-slate-300 block mt-1">Certifications</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-4">Unity, NPTEL DSA, Deloitte Analytics & Coursera C.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS MATRIX ==================== -->
+  <section class="py-20 border-b border-white/[0.08] bg-[#0A0C10]/60">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="flex items-center gap-3 mb-10">
+        <span class="w-3 h-3 bg-[#FF2A3A]"></span>
+        <span class="text-xs font-mono tracking-widest uppercase text-slate-400">02 / TECHNICAL ARSENAL & CREATIVE TOOLS</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Pillar 1: Programming -->
+        <div class="p-6 bg-[#0D0F16] border border-white/10 hover:border-[#FF2A3A]/60 transition">
+          <div class="w-10 h-10 bg-[#FF2A3A]/10 border border-[#FF2A3A]/30 flex items-center justify-center text-[#FF2A3A] mb-4">
+            <i data-lucide="code" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-syne font-bold text-lg text-white mb-2">Languages</h3>
+          <p class="text-xs font-mono text-slate-400 mb-4">Core syntax & logic</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">C</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Python</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Java</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">C++</span>
+          </div>
+        </div>
+
+        <!-- Pillar 2: AR/VR & 3D Hardware -->
+        <div class="p-6 bg-[#0D0F16] border border-white/10 hover:border-[#FF2A3A]/60 transition">
+          <div class="w-10 h-10 bg-[#FF2A3A]/10 border border-[#FF2A3A]/30 flex items-center justify-center text-[#FF2A3A] mb-4">
+            <i data-lucide="glasses" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-syne font-bold text-lg text-white mb-2">AR/VR & Hardware</h3>
+          <p class="text-xs font-mono text-slate-400 mb-4">Immersive & Fabrication</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-[#FF2A3A]">Unity 3D</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">CAD Modeling</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">3D Printing</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Additive Mfg</span>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Computer Science & Data -->
+        <div class="p-6 bg-[#0D0F16] border border-white/10 hover:border-[#FF2A3A]/60 transition">
+          <div class="w-10 h-10 bg-[#FF2A3A]/10 border border-[#FF2A3A]/30 flex items-center justify-center text-[#FF2A3A] mb-4">
+            <i data-lucide="database" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-syne font-bold text-lg text-white mb-2">Core CS & Analytics</h3>
+          <p class="text-xs font-mono text-slate-400 mb-4">Algorithms & Systems</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">DSA</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">OOP</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">DBMS</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Linux</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Power BI</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Pandas</span>
+          </div>
+        </div>
+
+        <!-- Pillar 4: Filmmaking & Creative -->
+        <div class="p-6 bg-[#0D0F16] border border-white/10 hover:border-[#FF2A3A]/60 transition">
+          <div class="w-10 h-10 bg-[#FF2A3A]/10 border border-[#FF2A3A]/30 flex items-center justify-center text-[#FF2A3A] mb-4">
+            <i data-lucide="clapperboard" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-syne font-bold text-lg text-white mb-2">Visual & Media</h3>
+          <p class="text-xs font-mono text-slate-400 mb-4">Framing, Light & Sound</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-[#FF2A3A]">Videography</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Photography</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Reel Editing</span>
+            <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-xs font-mono text-slate-200">Poster Design</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== DUAL PORTFOLIO SWITCHER & PROJECTS ==================== -->
+  <section id="projects" class="py-24 border-b border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header with Interactive Filter Tabs -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-3 h-3 bg-[#FF2A3A]"></span>
+            <span class="text-xs font-mono tracking-widest uppercase text-slate-400">03 / CURATED WORK</span>
+          </div>
+          <h2 class="font-syne font-extrabold text-3xl md:text-5xl uppercase text-white">
+            PROJECTS & <span class="text-[#FF2A3A]">CREATIONS</span>
+          </h2>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex items-center bg-[#0E1017] p-1 border border-white/10 self-start">
+          <button onclick="filterPortfolio('all')" id="filter-all" class="px-4 py-2 text-xs font-mono uppercase tracking-wider bg-[#FF2A3A] text-white font-bold transition">
+            All Works
+          </button>
+          <button onclick="filterPortfolio('tech')" id="filter-tech" class="px-4 py-2 text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-white transition">
+            AR/VR & Tech
+          </button>
+          <button onclick="filterPortfolio('media')" id="filter-media" class="px-4 py-2 text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-white transition">
+            Film & Photo
+          </button>
+        </div>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- PROJECT 1: Drone Design & Additive Mfg (Tech) -->
+        <div class="portfolio-item tech group bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-black/40">
+              <img 
+                src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=80" 
+                alt="Drone Design and Realization" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale contrast-125"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0E1119] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 bg-black/80 border border-white/10 text-[10px] font-mono text-[#FF2A3A] uppercase tracking-wider">
+                Additive Mfg • 2025
+              </span>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-syne font-bold text-xl text-white group-hover:text-[#FF2A3A] transition">
+                Drone Design & Realization via Additive Mfg
+              </h3>
+              <p class="text-xs font-mono text-slate-400 mt-1 mb-4">CAD Tools • 3D Printing • Aerodynamic Optimization</p>
+              
+              <ul class="space-y-2 text-xs text-slate-300 font-light list-disc list-inside">
+                <li>Designed and fabricated a lightweight drone frame using precision additive manufacturing.</li>
+                <li>Utilized CAD modeling for structural optimization and durability against payload stress.</li>
+                <li>Implemented 3D printing techniques to build custom aerodynamic components.</li>
+                <li>Refined flight stability and mechanical efficiency through rigorous iterative testing.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Academic Project</span>
+            <a href="https://github.com/panchaksharayya12" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#FF2A3A] flex items-center gap-1">
+              <span>View Details</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: Data Analytics Foundations (Tech) -->
+        <div class="portfolio-item tech group bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-black/40">
+              <img 
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" 
+                alt="Data Analytics Foundations" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale contrast-125"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0E1119] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 bg-black/80 border border-white/10 text-[10px] font-mono text-[#FF2A3A] uppercase tracking-wider">
+                Python Analytics
+              </span>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-syne font-bold text-xl text-white group-hover:text-[#FF2A3A] transition">
+                Data Analytics Foundations
+              </h3>
+              <p class="text-xs font-mono text-slate-400 mt-1 mb-4">Python • Pandas • NumPy • Matplotlib</p>
+              
+              <ul class="space-y-2 text-xs text-slate-300 font-light list-disc list-inside">
+                <li>Implemented complete data preprocessing pipelines for cleansing raw multi-source datasets.</li>
+                <li>Engineered automated visual analytics dashboards displaying trend variations and outliers.</li>
+                <li>Developed modular Python scripts to parse statistical distributions and KPIs.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Data Engineering</span>
+            <a href="https://github.com/panchaksharayya12" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#FF2A3A] flex items-center gap-1">
+              <span>GitHub Repo</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 3: Unity AR/VR Spatial Experience (Tech) -->
+        <div class="portfolio-item tech group bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-black/40">
+              <img 
+                src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80" 
+                alt="Unity AR/VR Environment" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale contrast-125"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0E1119] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 bg-black/80 border border-white/10 text-[10px] font-mono text-[#FF2A3A] uppercase tracking-wider">
+                Unity 3D • AR/VR
+              </span>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-syne font-bold text-xl text-white group-hover:text-[#FF2A3A] transition">
+                Interactive AR/VR Virtual Environments
+              </h3>
+              <p class="text-xs font-mono text-slate-400 mt-1 mb-4">Unity Game Engine • C# • Spatial Interaction</p>
+              
+              <ul class="space-y-2 text-xs text-slate-300 font-light list-disc list-inside">
+                <li>Architected spatial VR room mechanics with real-time physics and object grabbing.</li>
+                <li>Engineered smooth 6-DoF navigation controls for immersive simulation testing.</li>
+                <li>Certified by Unity Organization for Game & Simulation Development.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Virtual Reality</span>
+            <a href="https://github.com/panchaksharayya12" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#FF2A3A] flex items-center gap-1">
+              <span>View Source</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 4: College Event Highlight Reels & Videography (Media) -->
+        <div class="portfolio-item media group bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-black/40">
+              <img 
+                src="https://images.unsplash.com/photo-1518135714426-c18f5ffb6f4d?auto=format&fit=crop&w=800&q=80" 
+                alt="Videography & Highlight Reels" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale contrast-125"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0E1119] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 bg-black/80 border border-white/10 text-[10px] font-mono text-[#FF2A3A] uppercase tracking-wider">
+                Videography & Editing
+              </span>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-syne font-bold text-xl text-white group-hover:text-[#FF2A3A] transition">
+                College Event Coverage & Cinematic Aftermovies
+              </h3>
+              <p class="text-xs font-mono text-slate-400 mt-1 mb-4">Gimbal Operation • Sound Sync • Color Grading</p>
+              
+              <ul class="space-y-2 text-xs text-slate-300 font-light list-disc list-inside">
+                <li>Directed multi-angle live event footage across flagship university cultural and AR/VR meets.</li>
+                <li>Produced fast-paced viral Instagram reels and dynamic cinematic highlight reels.</li>
+                <li>Edited rhythmically paced audio-reactive sequences boosting audience engagement.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Cinematography</span>
+            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="text-white hover:text-[#FF2A3A] flex items-center gap-1">
+              <span>Watch Reel</span>
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 5: Event Photography & Showcase Documentation (Media) -->
+        <div class="portfolio-item media group bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-black/40">
+              <img 
+                src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" 
+                alt="Photography Showcase" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale contrast-125"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0E1119] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 bg-black/80 border border-white/10 text-[10px] font-mono text-[#FF2A3A] uppercase tracking-wider">
+                Event Photography
+              </span>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-syne font-bold text-xl text-white group-hover:text-[#FF2A3A] transition">
+                High-Contrast Event & Portrait Photography
+              </h3>
+              <p class="text-xs font-mono text-slate-400 mt-1 mb-4">Prime Lenses • Low-Light Capture • Lightroom</p>
+              
+              <ul class="space-y-2 text-xs text-slate-300 font-light list-disc list-inside">
+                <li>Captured official portraits, stage spotlights, and candid collegiate emotions.</li>
+                <li>Maintained color consistency across hundreds of institutional press and promotional assets.</li>
+                <li>Published in college yearbooks, magazines, and official media handles.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Photography</span>
+            <a href="#creative" class="text-white hover:text-[#FF2A3A] flex items-center gap-1">
+              <span>View Gallery</span>
+              <i data-lucide="image" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 6: Poster Design & Digital Campaign Graphics (Media) -->
+        <div class="portfolio-item media group bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-black/40">
+              <img 
+                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80" 
+                alt="Poster Design & Media" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale contrast-125"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0E1119] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 bg-black/80 border border-white/10 text-[10px] font-mono text-[#FF2A3A] uppercase tracking-wider">
+                Graphic & Brand Design
+              </span>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-syne font-bold text-xl text-white group-hover:text-[#FF2A3A] transition">
+                Event Branding & Digital Poster Campaigns
+              </h3>
+              <p class="text-xs font-mono text-slate-400 mt-1 mb-4">Typography • Layout Design • Visual Identity</p>
+              
+              <ul class="space-y-2 text-xs text-slate-300 font-light list-disc list-inside">
+                <li>Designed brochures, banners, and digital marketing creatives for college-level summits.</li>
+                <li>Blended bold typography with minimalist visual cues to drive event attendance.</li>
+                <li>Created branded social media campaign collateral driving high student registration.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400">Design Works</span>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#FF2A3A] flex items-center gap-1">
+              <span>Instagram Feed</span>
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CREATIVE VISUAL GALLERY & INSTAGRAM SHOWCASE ==================== -->
+  <section id="creative" class="py-24 border-b border-white/[0.08] bg-[#07080B]">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-3 h-3 bg-[#FF2A3A]"></span>
+            <span class="text-xs font-mono tracking-widest uppercase text-slate-400">04 / THE LENS & MOTION</span>
+          </div>
+          <h2 class="font-syne font-extrabold text-3xl md:text-5xl uppercase text-white">
+            PHOTOGRAPHY & <span class="text-[#FF2A3A]">CINEMATOGRAPHY</span>
+          </h2>
+          <p class="text-xs font-mono text-slate-400 mt-2">
+            Click any frame to inspect full-screen high resolution.
+          </p>
+        </div>
+
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono uppercase tracking-widest text-white flex items-center gap-2 transition self-start">
+          <i data-lucide="instagram" class="w-4 h-4 text-[#FF2A3A]"></i>
+          <span>Follow on Instagram (@panchaksharayya)</span>
+        </a>
+      </div>
+
+      <!-- Photo Grid Gallery (High-contrast editorial look) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        
+        <!-- Photo 1 -->
+        <div class="group relative aspect-[3/4] overflow-hidden bg-black/60 border border-white/10 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1400&q=80', 'Cinematic Portrait & Ambient Light')">
+          <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80" alt="Cinematic Portrait" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+            <span class="text-[10px] font-mono text-[#FF2A3A] uppercase">Light & Shadow</span>
+            <span class="text-xs font-syne font-bold text-white">Event Stage Mood</span>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="group relative aspect-[3/4] overflow-hidden bg-black/60 border border-white/10 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1400&q=80', 'Musical Night & Stage Performance')">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Musical Night" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+            <span class="text-[10px] font-mono text-[#FF2A3A] uppercase">Stage Concert</span>
+            <span class="text-xs font-syne font-bold text-white">Live Performance</span>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="group relative aspect-[3/4] overflow-hidden bg-black/60 border border-white/10 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1400&q=80', 'Dramatic Architecture & Perspective')">
+          <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80" alt="Dramatic Architecture" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+            <span class="text-[10px] font-mono text-[#FF2A3A] uppercase">Geometry</span>
+            <span class="text-xs font-syne font-bold text-white">Monochrome Angles</span>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="group relative aspect-[3/4] overflow-hidden bg-black/60 border border-white/10 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1400&q=80', 'Cinematic Outdoor Silhouette')">
+          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Cinematic Silhouette" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+            <span class="text-[10px] font-mono text-[#FF2A3A] uppercase">Atmospheric</span>
+            <span class="text-xs font-syne font-bold text-white">Silhouette in Motion</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ACADEMICS, CERTIFICATIONS & ACHIEVEMENTS (RESUME) ==================== -->
+  <section id="resume" class="py-24 border-b border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-3 h-3 bg-[#FF2A3A]"></span>
+            <span class="text-xs font-mono tracking-widest uppercase text-slate-400">05 / VERIFIED RECORD</span>
+          </div>
+          <h2 class="font-syne font-extrabold text-3xl md:text-5xl uppercase text-white">
+            ACADEMICS & <span class="text-[#FF2A3A]">CREDENTIALS</span>
+          </h2>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="window.print()" class="px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-mono tracking-wider uppercase text-white flex items-center gap-2 transition">
+            <i data-lucide="printer" class="w-4 h-4 text-[#FF2A3A]"></i>
+            <span>Print Resume</span>
+          </button>
+          <button onclick="openQRModal()" class="px-4 py-2.5 bg-[#FF2A3A] hover:bg-[#E01E2E] text-xs font-mono tracking-wider uppercase text-white font-bold flex items-center gap-2 transition">
+            <i data-lucide="qr-code" class="w-4 h-4"></i>
+            <span>Resume QR Code</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left: Education Timeline -->
+        <div class="lg:col-span-6 space-y-8">
+          <h3 class="font-syne font-bold text-xl uppercase tracking-wider text-white flex items-center gap-2">
+            <i data-lucide="graduation-cap" class="w-5 h-5 text-[#FF2A3A]"></i>
+            <span>Formal Education</span>
+          </h3>
+
+          <div class="space-y-6 border-l border-white/10 pl-6 relative">
+            
+            <!-- Item 1: B.Tech -->
+            <div class="relative group">
+              <span class="absolute -left-[31px] top-1.5 w-3 h-3 bg-[#FF2A3A] border-2 border-[#08090C]"></span>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-1">
+                <span class="text-[#FF2A3A] font-bold">2024 — 2028 (Expected)</span>
+                <span class="px-2 py-0.5 bg-white/5 border border-white/10 text-white font-bold">CGPA: 8.2</span>
+              </div>
+              <h4 class="font-syne font-bold text-lg text-white">Bachelor of Technology (B.Tech)</h4>
+              <p class="text-xs font-medium text-slate-300">Information Technology – AR/VR Specialization</p>
+              <p class="text-xs text-slate-400 mt-2 font-light">
+                Deep coursework in Spatial Computing, Unity 3D Development, Data Structures, Operating Systems, and Additive Prototyping.
+              </p>
+            </div>
+
+            <!-- Item 2: 12th Grade -->
+            <div class="relative group">
+              <span class="absolute -left-[31px] top-1.5 w-3 h-3 bg-white/40 border-2 border-[#08090C] group-hover:bg-[#FF2A3A] transition"></span>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-1">
+                <span>Completed 2024</span>
+                <span class="px-2 py-0.5 bg-white/5 border border-white/10 text-white font-bold">95.5% Score</span>
+              </div>
+              <h4 class="font-syne font-bold text-lg text-white">12th Grade (Pre-University)</h4>
+              <p class="text-xs font-medium text-slate-300">SA PU College | Naregal, Karnataka</p>
+              <p class="text-xs text-slate-400 mt-1 font-light">
+                State Board, Karnataka. Academic excellence with top distinction in Sciences and Mathematics.
+              </p>
+            </div>
+
+            <!-- Item 3: 10th Grade -->
+            <div class="relative group">
+              <span class="absolute -left-[31px] top-1.5 w-3 h-3 bg-white/40 border-2 border-[#08090C] group-hover:bg-[#FF2A3A] transition"></span>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-1">
+                <span>Completed 2022</span>
+                <span class="px-2 py-0.5 bg-white/5 border border-white/10 text-white font-bold">94.8% Score</span>
+              </div>
+              <h4 class="font-syne font-bold text-lg text-white">10th Grade (Secondary School)</h4>
+              <p class="text-xs font-medium text-slate-300">Adarsha Vidyalaya | Vijayanagara, Karnataka</p>
+              <p class="text-xs text-slate-400 mt-1 font-light">
+                Strong analytical foundation, scientific aptitude, and school leadership.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Official Certifications -->
+        <div class="lg:col-span-6 space-y-8">
+          <h3 class="font-syne font-bold text-xl uppercase tracking-wider text-white flex items-center gap-2">
+            <i data-lucide="award" class="w-5 h-5 text-[#FF2A3A]"></i>
+            <span>Professional Certifications</span>
+          </h3>
+
+          <div class="grid grid-cols-1 gap-4">
+            
+            <!-- Cert 1 -->
+            <div class="p-5 bg-[#0E1017] border border-white/10 hover:border-[#FF2A3A]/50 transition flex items-start justify-between gap-4">
+              <div class="space-y-1">
+                <span class="text-[10px] font-mono uppercase text-[#FF2A3A] tracking-wider">Spatial & Game Dev</span>
+                <h4 class="font-syne font-bold text-base text-white">Unity Game Development</h4>
+                <p class="text-xs text-slate-400">Unity Organization</p>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#FF2A3A]">
+                <i data-lucide="check" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Cert 2 -->
+            <div class="p-5 bg-[#0E1017] border border-white/10 hover:border-[#FF2A3A]/50 transition flex items-start justify-between gap-4">
+              <div class="space-y-1">
+                <span class="text-[10px] font-mono uppercase text-[#FF2A3A] tracking-wider">Core Computer Science</span>
+                <h4 class="font-syne font-bold text-base text-white">Data Structures & Algorithms (DSA)</h4>
+                <p class="text-xs text-slate-400">NPTEL</p>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#FF2A3A]">
+                <i data-lucide="check" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Cert 3 -->
+            <div class="p-5 bg-[#0E1017] border border-white/10 hover:border-[#FF2A3A]/50 transition flex items-start justify-between gap-4">
+              <div class="space-y-1">
+                <span class="text-[10px] font-mono uppercase text-[#FF2A3A] tracking-wider">Industry Analytics</span>
+                <h4 class="font-syne font-bold text-base text-white">Data Analytics Job Simulation</h4>
+                <p class="text-xs text-slate-400">Deloitte</p>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#FF2A3A]">
+                <i data-lucide="check" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Cert 4 -->
+            <div class="p-5 bg-[#0E1017] border border-white/10 hover:border-[#FF2A3A]/50 transition flex items-start justify-between gap-4">
+              <div class="space-y-1">
+                <span class="text-[10px] font-mono uppercase text-[#FF2A3A] tracking-wider">Programming Foundations</span>
+                <h4 class="font-syne font-bold text-base text-white">Fundamentals of C</h4>
+                <p class="text-xs text-slate-400">Coursera</p>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#FF2A3A]">
+                <i data-lucide="check" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ACHIEVEMENTS & PARTICIPATION (Section from resume) ==================== -->
+  <section id="achievements" class="py-24 border-b border-white/[0.08] bg-[#0A0C10]/70">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-3 h-3 bg-[#FF2A3A]"></span>
+        <span class="text-xs font-mono tracking-widest uppercase text-slate-400">06 / LEADERSHIP & CO-CURRICULAR</span>
+      </div>
+      <h2 class="font-syne font-extrabold text-3xl md:text-5xl uppercase text-white mb-12">
+        ACHIEVEMENTS & <span class="text-[#FF2A3A]">IMPACT</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Achievement 1: Event Coordinating -->
+        <div class="p-6 bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition">
+          <div class="text-[#FF2A3A] mb-3">
+            <i data-lucide="users" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-syne font-bold text-lg text-white mb-1">Event Coordinating</h4>
+          <p class="text-xs text-slate-300 leading-relaxed font-light">
+            Organized AR/VR and collegiate cultural events, managed student participation, stage logistics, and ensured flawless event execution.
+          </p>
+        </div>
+
+        <!-- Achievement 2: Poster Design -->
+        <div class="p-6 bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition">
+          <div class="text-[#FF2A3A] mb-3">
+            <i data-lucide="palette" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-syne font-bold text-lg text-white mb-1">Poster Design</h4>
+          <p class="text-xs text-slate-300 leading-relaxed font-light">
+            Created official high-impact posters, brochures, and digital collateral for institutional publicity, brand recognition, and awareness campaigns.
+          </p>
+        </div>
+
+        <!-- Achievement 3: Photography -->
+        <div class="p-6 bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition">
+          <div class="text-[#FF2A3A] mb-3">
+            <i data-lucide="camera" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-syne font-bold text-lg text-white mb-1">Photography</h4>
+          <p class="text-xs text-slate-300 leading-relaxed font-light">
+            Documented key moments from academic conferences, showcases, and festival events for official publication and archives.
+          </p>
+        </div>
+
+        <!-- Achievement 4: Videography & Highlight Reels -->
+        <div class="p-6 bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition">
+          <div class="text-[#FF2A3A] mb-3">
+            <i data-lucide="video" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-syne font-bold text-lg text-white mb-1">Videography</h4>
+          <p class="text-xs text-slate-300 leading-relaxed font-light">
+            Recorded full-scale event coverage, captured dynamic B-rolls, and engineered cinematic highlight reels for social broadcasts.
+          </p>
+        </div>
+
+        <!-- Achievement 5: Video Editing -->
+        <div class="p-6 bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition">
+          <div class="text-[#FF2A3A] mb-3">
+            <i data-lucide="film" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-syne font-bold text-lg text-white mb-1">Video Editing & Reels</h4>
+          <p class="text-xs text-slate-300 leading-relaxed font-light">
+            Cut and color-graded fast-paced promotional reels and recap videos, driving high engagement rates on social channels.
+          </p>
+        </div>
+
+        <!-- Achievement 6: Volunteering & Esports -->
+        <div class="p-6 bg-[#0E1119] border border-white/10 hover:border-[#FF2A3A]/60 transition">
+          <div class="text-[#FF2A3A] mb-3">
+            <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-syne font-bold text-lg text-white mb-1">Volunteering & Esports</h4>
+          <p class="text-xs text-slate-300 leading-relaxed font-light">
+            Assisted community awareness drives. Represented department in inter-college competitive esports tournaments, building team synergy.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT & COLLABORATION SECTION ==================== -->
+  <section id="contact" class="py-24 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="relative bg-[#0E1119] border border-white/10 p-8 md:p-16">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 bg-[#FF2A3A]"></span>
+              <span class="text-xs font-mono tracking-widest uppercase text-[#FF2A3A]">GET IN TOUCH</span>
+            </div>
+            
+            <h2 class="font-syne font-black text-3xl md:text-5xl uppercase tracking-tight text-white leading-tight">
+              LET'S BUILD OR SHOOT<br/>
+              <span class="text-[#FF2A3A]">SOMETHING EXTRAORDINARY.</span>
+            </h2>
+
+            <p class="text-slate-300 text-sm md:text-base font-light leading-relaxed max-w-xl">
+              Whether you have an AR/VR development opportunity, additive manufacturing project, or want cinematic video & photography coverage for an upcoming production — my channels are open.
+            </p>
+
+            <!-- Direct Details -->
+            <div class="space-y-4 pt-4">
+              
+              <!-- Email -->
+              <div class="flex items-center gap-4 group cursor-pointer" onclick="copyToClipboard('panchaksharayyas22@gmail.com', 'Email copied to clipboard!')">
+                <div class="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center text-[#FF2A3A]">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] font-mono text-slate-400 block uppercase">Email Address (Click to copy)</span>
+                  <span class="text-sm md:text-base font-mono font-bold text-white group-hover:text-[#FF2A3A] transition">
+                    panchaksharayyas22@gmail.com
+                  </span>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="flex items-center gap-4 group cursor-pointer" onclick="copyToClipboard('+918310813290', 'Phone number copied to clipboard!')">
+                <div class="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center text-[#FF2A3A]">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] font-mono text-slate-400 block uppercase">Direct Phone / WhatsApp (Click to copy)</span>
+                  <span class="text-sm md:text-base font-mono font-bold text-white group-hover:text-[#FF2A3A] transition">
+                    +91-8310813290
+                  </span>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center text-[#FF2A3A]">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] font-mono text-slate-400 block uppercase">Location</span>
+                  <span class="text-sm font-mono font-bold text-white">Karnataka, India</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Quick Message / Actions -->
+          <div class="lg:col-span-5 bg-[#08090C] border border-white/10 p-6 md:p-8 space-y-6">
+            <h3 class="font-syne font-bold text-lg text-white uppercase tracking-wider">Quick Connect</h3>
+            
+            <div class="space-y-3">
+              <a href="mailto:panchaksharayyas22@gmail.com?subject=Opportunity%20/%20Collaboration%20Inquiry" class="w-full py-3.5 bg-[#FF2A3A] hover:bg-[#E01E2E] text-white font-syne font-bold text-xs uppercase tracking-widest transition text-center block shadow-lg shadow-red-900/30">
+                Send Direct Email
+              </a>
+
+              <a href="https://wa.me/918310813290?text=Hello%20Panchaksharayya,%20I%20saw%20your%20cinematic%20portfolio!" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-syne font-bold text-xs uppercase tracking-widest transition text-center block">
+                Chat on WhatsApp
+              </a>
+
+              <button onclick="openQRModal()" class="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/15 text-slate-300 font-mono text-xs uppercase tracking-widest transition text-center flex items-center justify-center gap-2">
+                <i data-lucide="qr-code" class="w-4 h-4 text-[#FF2A3A]"></i>
+                <span>Get Resume QR Code</span>
+              </button>
+            </div>
+
+            <div class="pt-4 border-t border-white/10">
+              <span class="text-[11px] font-mono text-slate-400 block mb-2 uppercase">Official Profiles</span>
+              <div class="flex flex-wrap gap-2 text-xs font-mono">
+                <a href="https://www.linkedin.com/in/panchaksharayya-s" target="_blank" class="px-2.5 py-1 bg-white/5 hover:bg-white/10 border border-white/10 text-white transition">LinkedIn</a>
+                <a href="https://github.com/panchaksharayya12" target="_blank" class="px-2.5 py-1 bg-white/5 hover:bg-white/10 border border-white/10 text-white transition">GitHub</a>
+                <a href="https://leetcode.com/u/panchaksharayya12" target="_blank" class="px-2.5 py-1 bg-white/5 hover:bg-white/10 border border-white/10 text-white transition">LeetCode</a>
+                <a href="https://www.hackerrank.com/profile/panchaksharayya12" target="_blank" class="px-2.5 py-1 bg-white/5 hover:bg-white/10 border border-white/10 text-white transition">HackerRank</a>
+                <a href="https://instagram.com" target="_blank" class="px-2.5 py-1 bg-white/5 hover:bg-white/10 border border-white/10 text-[#FF2A3A] transition">Instagram</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-12 border-t border-white/10 bg-[#060709] text-xs font-mono text-slate-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      
+      <div class="flex items-center gap-3">
+        <span class="font-syne font-bold text-white text-sm">PANCHAKSHARAYYA<span class="text-[#FF2A3A]">-S</span></span>
+        <span>•</span>
+        <span>Crafted with pure HTML, Tailwind & Modern Cinematic Motion</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="hover:text-white transition">Back to Top ↑</a>
+        <button onclick="openQRModal()" class="hover:text-[#FF2A3A] transition">Download QR</button>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== INTERACTIVE QR CODE MODAL ==================== -->
+  <div id="qrModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-6 hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-[#0E1119] border border-white/20 p-8 max-w-sm w-full relative text-center space-y-6 shadow-2xl">
+      
+      <!-- Close button -->
+      <button onclick="closeQRModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div>
+        <span class="text-[11px] font-mono uppercase text-[#FF2A3A] tracking-widest block mb-1">Interactive Resume QR</span>
+        <h3 class="font-syne font-bold text-xl text-white">SCAN TO OPEN PORTFOLIO</h3>
+        <p class="text-xs text-slate-400 mt-1">
+          Place this QR code on your PDF resume so recruiters can scan with their phone camera to watch your video reels and projects!
+        </p>
+      </div>
+
+      <!-- QR Canvas Container -->
+      <div class="bg-white p-4 inline-block mx-auto rounded-none shadow-lg">
+        <div id="qrcodeCanvas"></div>
+      </div>
+
+      <div class="text-[11px] font-mono text-slate-300 break-all bg-black/50 p-2 border border-white/10">
+        <span id="qrUrlLabel">https://panchaksharayya12.github.io</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="space-y-2">
+        <button onclick="downloadQRCode()" class="w-full py-2.5 bg-[#FF2A3A] hover:bg-[#E01E2E] text-white font-syne font-bold text-xs uppercase tracking-widest transition flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Download QR for Resume (PNG)</span>
+        </button>
+        <button onclick="closeQRModal()" class="w-full py-2 text-slate-400 hover:text-white text-xs font-mono uppercase">
+          Close Window
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== FULL-SCREEN IMAGE LIGHTBOX MODAL ==================== -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 md:p-8 hidden opacity-0 transition-opacity duration-300" onclick="closeLightbox()">
+    <div class="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-slate-300 hover:text-white p-2">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <img id="lightboxImage" src="" alt="Enlarged Showcase" class="max-h-[80vh] w-auto object-contain border border-white/20 shadow-2xl" />
+      <p id="lightboxCaption" class="text-xs font-mono text-slate-300 mt-3 text-center uppercase tracking-widest"></p>
+    </div>
+  </div>
+
+  <!-- ==================== VIDEO SHOWREEL MODAL ==================== -->
+  <div id="videoModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8 hidden opacity-0 transition-opacity duration-300" onclick="closeVideoModal()">
+    <div class="relative max-w-4xl w-full aspect-video bg-black border border-white/20 shadow-2xl" onclick="event.stopPropagation()">
+      <button onclick="closeVideoModal()" class="absolute -top-10 right-0 text-slate-300 hover:text-white p-2">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-[#0E1119] border border-[#FF2A3A] px-5 py-3 text-xs font-mono text-white flex items-center gap-2.5 shadow-2xl transform translate-y-20 opacity-0 pointer-events-none">
+    <i data-lucide="check-circle" class="w-4 h-4 text-[#FF2A3A]"></i>
+    <span id="toastMessage">Action completed</span>
+  </div>
+
+  <!-- ==================== CLIENT SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Navigation Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Portfolio Filter Switcher
+    function filterPortfolio(category) {
+      const items = document.querySelectorAll('.portfolio-item');
+      const btns = ['all', 'tech', 'media'];
+      
+      btns.forEach(b => {
+        const btnEl = document.getElementById(`filter-${b}`);
+        if (b === category) {
+          btnEl.className = 'px-4 py-2 text-xs font-mono uppercase tracking-wider bg-[#FF2A3A] text-white font-bold transition';
+        } else {
+          btnEl.className = 'px-4 py-2 text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-white transition';
+        }
+      });
+
+      items.forEach(item => {
+        if (category === 'all') {
+          item.style.display = 'flex';
+        } else {
+          if (item.classList.contains(category)) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    // Lightbox Functionality
+    function openLightbox(imgSrc, caption) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImage');
+      const cap = document.getElementById('lightboxCaption');
+      
+      img.src = imgSrc;
+      cap.innerText = caption;
+      
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+      }, 10);
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+
+    // Video Reel Modal
+    function openVideoModal(url) {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoIframe');
+      iframe.src = url;
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+      }, 10);
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoIframe');
+      iframe.src = '';
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+
+    // Dynamic QR Code Generation
+    let qrInstance = null;
+    function openQRModal() {
+      const modal = document.getElementById('qrModal');
+      const canvasContainer = document.getElementById('qrcodeCanvas');
+      const urlLabel = document.getElementById('qrUrlLabel');
+      
+      // Determine the portfolio target URL
+      let targetUrl = window.location.href;
+      if (targetUrl.includes('file://') || targetUrl.includes('localhost') || targetUrl.includes('127.0.0.1')) {
+        targetUrl = 'https://panchaksharayya12.github.io';
+      }
+      urlLabel.innerText = targetUrl;
+
+      canvasContainer.innerHTML = '';
+      qrInstance = new QRCode(canvasContainer, {
+        text: targetUrl,
+        width: 180,
+        height: 180,
+        colorDark: "#08090C",
+        colorLight: "#FFFFFF",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+      }, 10);
+    }
+
+    function closeQRModal() {
+      const modal = document.getElementById('qrModal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+
+    function downloadQRCode() {
+      const img = document.querySelector('#qrcodeCanvas img');
+      const canvas = document.querySelector('#qrcodeCanvas canvas');
+      
+      let imageSrc = '';
+      if (img && img.src) {
+        imageSrc = img.src;
+      } else if (canvas) {
+        imageSrc = canvas.toDataURL("image/png");
+      }
+
+      if (imageSrc) {
+        const a = document.createElement('a');
+        a.href = imageSrc;
+        a.download = 'Panchaksharayya_Portfolio_QR.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        showToast('QR Code saved! Add this to your resume.');
+      } else {
+        showToast('Generating QR code image...');
+      }
+    }
+
+    // Toast Notification Utility
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      toastMessage.innerText = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    // Copy to Clipboard Utility
+    function copyToClipboard(text, successMsg) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(successMsg);
+      }).catch(() => {
+        showToast('Copied: ' + text);
+      });
+    }
+
+    // Keyboard Shortcuts (Esc to close modals)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeQRModal();
+        closeLightbox();
+        closeVideoModal();
+      }
+    });
+  </script>
+</body>
+</html>
